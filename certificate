@@ -1,0 +1,1 @@
+sudo certbot certonly --agree-tos --email nk.murugesan@kovaion.com --manual --preferred-challenges=dns -d *.kovaion.ai
