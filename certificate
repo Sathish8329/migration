@@ -1,1 +1,4 @@
 sudo certbot certonly --agree-tos --email nk.murugesan@kovaion.com --manual --preferred-challenges=dns -d *.kovaion.ai
+
+
+add TXT to your domain and check in the link that is displayed in the screen.  Once added press enter.
