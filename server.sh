@@ -2,8 +2,8 @@
 #CLONE, INSTALL & CHANGE ENV FILE#
 # Set your Azure DevOps credentials
 
-username="nk.murugesan"
-password="fukj7yqgiraw3fdso5ydqvti2klcjww2gtfr3vyaynw5skw3njpa"
+username="******"
+password="******"
 
 # Set the IP address variable
 ip_address="165.232.181.35"
@@ -18,12 +18,15 @@ frontend="generic-workflows-frontend"
 branch="stage_lowcode_261223"
 
 # Define the domains
-frontenddomain="http://q4-2023-stage.kovaion.ai"
-backenddomain="http://q4-2023-stage.kovaion.ai/api/v1/"
-authdomain="http://q4-2023-stage.kovaion.ai/auth/api/v1/"
+frontenddomain="https://q4-2023-stage.kovaion.ai"
+backenddomain="https://q4-2023-stage.kovaion.ai/api/v1/"
+authdomain="https://q4-2023-stage.kovaion.ai/auth/api/v1/"
 subdomain="q4-2023-stage"
-authdomain1="http://q4-2023-stage.kovaion.ai/auth"
+authdomain1="https://q4-2023-stage.kovaion.ai/auth"
 subdomainIP="165.232.181.35"
+
+mongodb="mongodb+srv://doadmin:3TtE8eidr017926A@mongodb-kovaion-stage-093f050e.mongo.ondigitalocean.com"
+doadmin="doadmin:3TtE8eidr017926A@mongodb-kovaion-stage-093f050e.mongo.ondigitalocean.com"
 
 # Define Redis Host and Port
 #REDIS_HOST = 127.0.0.1
@@ -110,6 +113,8 @@ npm install --force
 
 cd ..
 
+rm -rf "$frontend"
+
 # Clone the Git repository
 echo "Cloning Git repository..."
 frontend_repo_url="https://${username}:${password}@$frontend_url"
@@ -128,6 +133,8 @@ FILE_PATH_1="/root/webhook/scripts/app/auth/.env"
 sed -i "s|FRONT_END_URL =.*|FRONT_END_URL = $frontenddomain|" "$FILE_PATH_1"
 sed -i "s|FRONT_END_DOMAIN =.*|FRONT_END_DOMAIN = $frontenddomain|" "$FILE_PATH_1"
 sed -i "s|SUB_DOMAIN =.*|SUB_DOMAIN_NAME = $subdomain|" "$FILE_PATH_1"
+sed -i "s|MAIN_DB_URL =.*|MAIN_DB_URL = $mongodb|" "$FILE_PATH_1"
+sed -i "s|MAIN_HOST =.*|MAIN_HOST = $doadmin|" "$FILE_PATH_1"
 
 echo "Text in $FILE_PATH_1 updated successfully."
 
@@ -137,7 +144,7 @@ FILE_PATH_2="/root/webhook/scripts/app/generic-workflows-frontend/.env.developme
 # Use sed to replace the values in the second file
 sed -i "s|REACT_APP_API_BASE_URL=.*|REACT_APP_API_BASE_URL= $backenddomain|" "$FILE_PATH_2"
 sed -i "s|REACT_APP_API_AUTH_URL =.*|REACT_APP_API_AUTH_URL = $authdomain|" "$FILE_PATH_2"
-sed -i "s|LANDING_PAGE=.*|LANDING_PAGE=$subdomain|" "$FILE_PATH_2"
+sed -i "s|LANDING_PAGE=.*|LANDING_PAGE= $subdomain|" "$FILE_PATH_2"
 
 echo "Text in $FILE_PATH_2 updated successfully."
 
@@ -149,7 +156,10 @@ sed -i "s|FRONT_END_URL[[:space:]]*=[[:space:]]*https://.*|FRONT_END_URL=$fronte
 sed -i "s|REDIS_HOST[[:space:]]*=[[:space:]]*.*|REDIS_HOST=$Redis_Host|" "$FILE_PATH_3"
 sed -i "s|REDIS_PORT[[:space:]]*=[[:space:]]*.*|REDIS_PORT=$Redis_Port|" "$FILE_PATH_3"
 sed -i "s|RESELLER_SLUG[[:space:]]*=[[:space:]]*.*|RESELLER_SLUG=$slug|" "$FILE_PATH_3"
-sed -i "s|SUB_DOMAIN_IP[[:space:]]*=[[:space:]]*.*|SUB_DOMAIN_IP=$subdomainIP|" "$FILE_PATH_3"
+sed -i "s|SUB_DOAMIN_IP[[:space:]]*=[[:space:]]*.*|SUB_DOAMIN_IP=$subdomainIP|" "$FILE_PATH_3"
+sed -i "s|MAIN_DB_URL =.*|MAIN_DB_URL = $mongodb|" "$FILE_PATH_3"
+sed -i "s|DEMO_MAIN_HOST =.*|DEMO_MAIN_HOST = $mongodb|" "$FILE_PATH_3"
+sed -i "s|MAIN_HOST =.*|MAIN_HOST = $doadmin|" "$FILE_PATH_3"
 
 echo "Text in $FILE_PATH_3 updated successfully."
 
