@@ -1,8 +1,8 @@
 #!/bin/bash
 #CLONE, INSTALL & CHANGE ENV FILE#
 # Set your Azure DevOps credentials
-username="nk.murugesan"
-password="iusbzr3igmencie4cv5xeqiamis2jwytgkviemdpis3n24roi22a"
+username="****"
+password="*****"
 
 # Set the IP address variable
 ip_address="13.201.44.206"
