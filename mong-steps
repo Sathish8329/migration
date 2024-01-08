@@ -2,3 +2,10 @@ mongosh --host your-mongodb-host --port your-mongodb-port
 
 use tenantDB
 db.tenant('adminUser', 'adminPassword')
+
+use tenantdb
+db.user.insert({
+  username: "john_doe",
+  email: "john.doe@example.com",
+  age: 30
+})
