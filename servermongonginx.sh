@@ -2,7 +2,7 @@
 #CLONE, INSTALL & CHANGE ENV FILE#
 # Set your Azure DevOps credentials
 
-username="****"
+username="******"
 password="******"
 
 # Set the IP address variable
@@ -341,4 +341,3 @@ echo "$new_content" > "$nginx_sites_available/$default_file"
 systemctl restart nginx
 
 echo "Nginx configuration has been updated and Nginx has been restarted."
-
